@@ -1,0 +1,6 @@
+Universal Credit journal extract, shared by the tenant (synthetic)
+
+28 Dec 2025  Claim made. First payment expected 2 February 2026.
+2 Feb 2026  Payment made. Housing element: £0. Reason: rent verification not received from landlord.
+3 Mar 2026  Rent verification received from landlord. Housing element added.
+16 Mar 2026  Managed payment to landlord set up.

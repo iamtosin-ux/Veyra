@@ -1,0 +1,7 @@
+Smart meter communication log, 14 Carrow Lane (synthetic)
+
+28 Jun 2024  Last automatic reading received: 11,050 kWh
+1 Jul 2024   Meter not communicating. Estimated billing started.
+14 Oct 2024  Customer contact: reports "in-home display says no signal". Ticket opened.
+14 Oct 2024  Ticket closed: "no action required".
+30 Apr 2026  Actual reading taken at visit: 18,412 kWh

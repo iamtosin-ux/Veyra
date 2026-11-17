@@ -1,0 +1,263 @@
+@import "../styles/globals.css";
+/* Pajamas, GitLab's design system: its generated tokens, light and dark (.gl-dark). */
+@import "../styles/pajamas/tokens.css";
+@import "../styles/pajamas/tokens.dark.css";
+
+/* This version of Veyra is dressed in Pajamas. The screens are built on BoardUI's
+   semantic tokens and Veyra's own names; both resolve to Pajamas tokens below, so
+   every screen takes Pajamas colour, type and corners without changing its markup.
+   Pajamas tokens flip under .gl-dark, so there are no per-token dark values here. */
+@theme {
+  /* Motion: strong ease-out for UI, ease-in-out for on-screen movement. Short durations everywhere. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-doc: var(--font-serif-ui), ui-serif, Georgia, serif;
+  --font-heading: var(--font-heading-ui), ui-serif, Georgia, serif;
+  --font-mono: var(--font-mono-source), ui-monospace, monospace;
+
+  /* Veyra's names on BoardUI's semantic tokens. */
+  --color-canvas: var(--color-background-secondary-default);
+  --color-sidebar: var(--color-background-secondary-default);
+  --color-panel: var(--color-background-primary-default);
+  --color-subtle: var(--color-background-secondary-default);
+  --color-hover: var(--color-background-secondary-hover);
+  --color-ink: var(--color-text-primary);
+  --color-muted: var(--color-text-secondary);
+  --color-faint: var(--color-text-tertiary);
+  --color-line: var(--color-separator-border);
+  --color-line-strong: var(--color-border-button-hover);
+  --color-primary: var(--color-accent-600);
+  --color-primary-hover: var(--color-accent-700);
+  --color-accent: var(--color-accent-600);
+  --color-accent-soft: var(--color-accent-50);
+  --color-strip: var(--color-background-secondary-default);
+  --color-draft: var(--gl-text-color-warning);
+  --color-draft-soft: var(--gl-feedback-warning-background-color);
+  --color-ok: var(--gl-text-color-success);
+  --color-ok-soft: var(--gl-feedback-success-background-color);
+  --color-info: var(--gl-text-color-link);
+  --color-info-soft: var(--gl-feedback-info-background-color);
+  --color-danger: var(--gl-text-color-danger);
+  --color-danger-soft: var(--gl-feedback-danger-background-color);
+
+
+  /* Pajamas corners are tighter: cards 12px, controls and actions 8px, default 4px. */
+  --radius-sm: var(--gl-border-radius-sm);
+  --radius-md: var(--gl-border-radius-md);
+  --radius-lg: var(--gl-border-radius-lg);
+  --radius-xl: var(--gl-border-radius-lg);
+  --radius-2xl: var(--gl-border-radius-xl);
+  --radius-3xl: var(--gl-card-border-radius);
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 0 0 1px rgb(0 0 0 / 0.04);
+  --shadow-dialog: 0 24px 64px -12px rgb(0 0 0 / 0.28), 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+
+/* BoardUI's semantic tokens, resolved to Pajamas. */
+:root {
+  /* Surfaces */
+  --color-background-full: var(--gl-background-color-default);
+  --color-background-primary-default: var(--gl-background-color-default);
+  --color-background-primary-hover: var(--gl-background-color-subtle);
+  --color-background-primary-active: var(--gl-background-color-strong);
+  --color-background-secondary-default: var(--gl-background-color-subtle);
+  --color-background-secondary-hover: var(--gl-background-color-strong);
+  --color-background-tertiary-default: var(--gl-control-background-color-default);
+  --color-background-tertiary-hover: var(--gl-background-color-subtle);
+  --color-background-quaternary-default: var(--gl-background-color-strong);
+
+  /* Text and icons */
+  --color-text-primary: var(--gl-text-color-default);
+  --color-text-secondary: var(--gl-text-color-subtle);
+  --color-text-tertiary: var(--gl-color-neutral-500);
+  --color-text-placeholder: var(--gl-control-placeholder-color);
+  --color-text-disabled: var(--gl-text-color-disabled);
+  --color-text-error-primary: var(--gl-text-color-danger);
+  --color-text-destructive: var(--gl-text-color-danger);
+  --color-foreground-icon-primary: var(--gl-icon-color-default);
+  --color-foreground-icon-secondary: var(--gl-icon-color-subtle);
+  --color-foreground-icon-tertiary: var(--gl-color-neutral-400);
+  --color-foreground-icon-error: var(--gl-text-color-danger);
+
+  /* Lines */
+  --color-separator-border: var(--gl-border-color-default);
+  --color-separator-border-strong: var(--gl-border-color-strong);
+  --color-border-button-default: var(--gl-border-color-default);
+  --color-border-button-hover: var(--gl-border-color-strong);
+  --color-border-button-active: var(--gl-border-color-strong);
+  --color-border-table: var(--gl-border-color-default);
+  --color-border-checkbox-default: var(--gl-control-border-color-default);
+  --color-border-checkbox-hover: var(--gl-control-border-color-hover);
+  --color-border-error-default: var(--gl-control-border-color-error);
+  --color-border-focus-ring: var(--gl-focus-ring-outer-color);
+
+  /* Actions: Pajamas confirm buttons are near-black and flat; focus and links are blue. */
+  --color-accent-50: var(--gl-color-neutral-10);
+  --color-accent-100: var(--gl-color-neutral-50);
+  --color-accent-200: var(--gl-color-neutral-100);
+  --color-accent-300: var(--gl-color-neutral-200);
+  --color-accent-400: var(--gl-color-neutral-600);
+  --color-accent-500: var(--gl-color-neutral-800);
+  --color-accent-600: var(--gl-button-confirm-primary-background-color-default);
+  --color-accent-700: var(--gl-button-confirm-primary-background-color-hover);
+  --color-accent-800: var(--gl-color-neutral-950);
+  --color-accent-900: var(--gl-color-neutral-950);
+  --color-accent-950: var(--gl-color-neutral-1000);
+  --gradient-button-primary-default: linear-gradient(var(--gl-button-confirm-primary-background-color-default), var(--gl-button-confirm-primary-background-color-default));
+  --gradient-button-primary-hover: linear-gradient(var(--gl-button-confirm-primary-background-color-hover), var(--gl-button-confirm-primary-background-color-hover));
+  --gradient-button-primary-active: linear-gradient(var(--gl-button-confirm-primary-background-color-active), var(--gl-button-confirm-primary-background-color-active));
+  --gradient-button-danger-default: linear-gradient(var(--gl-button-danger-primary-background-color-default), var(--gl-button-danger-primary-background-color-default));
+  --gradient-button-danger-hover: linear-gradient(var(--gl-button-danger-primary-background-color-hover), var(--gl-button-danger-primary-background-color-hover));
+
+  /* Feedback */
+  --color-notification-error-background: var(--gl-feedback-danger-background-color);
+  --color-notification-error-foreground: var(--gl-feedback-danger-text-color);
+  --color-notification-success-background: var(--gl-feedback-success-background-color);
+  --color-notification-success-foreground: var(--gl-feedback-success-text-color);
+  --color-notification-information-background: var(--gl-feedback-info-background-color);
+  --color-notification-information-foreground: var(--gl-feedback-info-text-color);
+  --color-kbd-background: var(--gl-background-color-strong);
+  --color-kbd-foreground: var(--gl-text-color-subtle);
+}
+
+/* The overlay behind every modal, drawer and sheet: Pajamas' own. */
+.bg-overlay {
+  background-color: var(--gl-background-color-overlay);
+}
+
+html { color-scheme: light; }
+
+/* In the base layer so a component's own focus styling (e.g. outline-none on a
+   text area inside a bordered composer) takes precedence. */
+@layer base {
+  /* Pajamas headings: GitLab Sans, semibold, in the heading colour. */
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--gl-text-color-heading);
+    letter-spacing: -0.01em;
+  }
+
+  /* Every pressable control gives a small press, so the interface feels like it heard you. */
+  button {
+    transition-property: color, background-color, border-color, box-shadow, opacity, scale;
+    transition-duration: 150ms;
+    transition-timing-function: var(--ease-out);
+  }
+  button:not(:disabled):not([data-no-press]):active {
+    scale: 0.97;
+  }
+  /* Full-width rows and section headers don't shrink when pressed: on a wide row a 3% press
+     moves the edges by 10px or more and reads as a jump, not feedback. */
+  button:is(.w-full, .flex-1):active {
+    scale: none;
+  }
+  :focus-visible {
+    outline: 1px solid oklch(0.708 0 0);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+::selection { background: oklch(0.922 0 0); }
+
+.scroll-panel { overflow-y: auto; scrollbar-width: thin; scrollbar-color: oklch(0.87 0 0) transparent; }
+
+/* Dark theme: the same tokens with darker values, chosen in Account settings (System, Light or Dark). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 0 0 1px rgb(255 255 255 / 0.06);
+  --shadow-dialog: 0 24px 64px -12px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+/* The few hard-coded light surfaces and their text follow the theme too. */
+:root[data-theme="dark"] :is(.bg-\[\#fafaf9\], .bg-\[\#f7f7f6\]) { background-color: var(--color-subtle); }
+:root[data-theme="dark"] :is(.bg-\[\#fdf3e7\], .bg-\[\#fcebd6\]) { background-color: #3a2a14; }
+:root[data-theme="dark"] :is(.bg-\[\#f4f9fd\], .bg-\[\#e2e5fa\], .bg-\[\#e4eef8\], .bg-\[\#eef1f7\]) { background-color: #1b2a45; }
+:root[data-theme="dark"] :is(.bg-\[\#eef8f4\], .bg-\[\#ddf3ea\]) { background-color: #173326; }
+:root[data-theme="dark"] .bg-\[\#f1e4f8\] { background-color: #33203d; }
+:root[data-theme="dark"] .text-\[\#8a4a10\] { color: #f0b46a; }
+:root[data-theme="dark"] :is(.text-\[\#1f5a8a\], .text-\[\#2f6fa3\], .text-\[\#2f5aa8\], .text-\[\#1f4f7a\]) { color: #93b6f2; }
+:root[data-theme="dark"] .text-\[\#6f2a8f\] { color: #d4a3ec; }
+
+mark.cite { background: #fde68a; color: inherit; border-radius: 2px; padding: 0 1px; }
+
+@keyframes dialog-in { from { opacity: 0; transform: translateY(8px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+/* Menus and popovers grow from their trigger (set transform-origin inline); modals stay centred. */
+@keyframes pop-in { from { opacity: 0; scale: 0.96; } to { opacity: 1; scale: 1; } }
+.animate-dialog { animation: dialog-in 200ms var(--ease-out); }
+.animate-fade { animation: fade-in 150ms var(--ease-out); }
+.animate-pop { animation: pop-in 150ms var(--ease-out); }
+/* The Veyra mark while the assistant works: each dot brightens in turn round the circle as the mark turns. */
+@keyframes logo-turn { to { transform: rotate(360deg); } }
+@keyframes logo-dot { 0%, 100% { opacity: 0.25; transform: scale(0.8); } 25% { opacity: 1; transform: scale(1.08); } 50% { opacity: 0.45; transform: scale(0.9); } }
+.logo-spinner { animation: logo-turn 3.6s linear infinite; }
+/* A light sweep across a status label while work is in progress, including a running Trace line's title. */
+.shimmer-text,
+[data-slot="trace-line"][data-status="running"] [data-slot="trace-title"] {
+  color: transparent;
+  background: linear-gradient(90deg, var(--color-muted) 0%, var(--color-muted) 40%, var(--color-ink) 50%, var(--color-muted) 60%, var(--color-muted) 100%) 0 0 / 250% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmer 2.2s linear infinite;
+}
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: -150% 0; } }
+.logo-spinner path { transform-box: fill-box; transform-origin: center; animation: logo-dot 1.2s ease-in-out infinite; }
+
+/* Reduced motion: keep fades, drop movement and scaling. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-dialog, .animate-pop { animation: fade-in 150ms ease; }
+  button:not(:disabled):active { scale: none; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .animate-bounce, .animate-ping { animation: none; }
+  .logo-spinner { animation: none; }
+  .shimmer-text,
+  [data-slot="trace-line"][data-status="running"] [data-slot="trace-title"] { animation: none; color: var(--color-muted); background: none; }
+  .logo-spinner path { animation: fade-in 1.2s ease-in-out infinite alternate; }
+}
+
+/* Dropdowns: a consistent chevron inset from the edge, with room for it in the padding. */
+select:not([multiple]) {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem !important;
+}
+
+
+/*
+ * Touch screens: small controls get an invisible tap area of at least 40px,
+ * centred on the control, so icons and citation chips are easy to hit with a
+ * finger without changing the layout. Positioned controls keep their own
+ * positioning; the area hangs off a pseudo-element.
+ */
+@media (pointer: coarse) {
+  :is(button, a[href], [role="button"]):not(.absolute, .fixed, .sticky) {
+    position: relative;
+  }
+  :is(button, a[href], [role="button"])::after {
+    content: "";
+    position: absolute;
+    top: min(0px, calc((100% - 40px) / 2));
+    bottom: min(0px, calc((100% - 40px) / 2));
+    left: min(0px, calc((100% - 40px) / 2));
+    right: min(0px, calc((100% - 40px) / 2));
+  }
+}
+
+/*
+ * Touch screens can't hover, so controls that only appear on hover (row menus,
+ * card options, selection boxes) are always shown there. Decorative hover
+ * washes are marked aria-hidden and stay as they are.
+ */
+@media (hover: none) {
+  [class*="opacity-0"]:is([class*="group-hover:opacity-100"], [class*="group-hover/nav:opacity-100"]):not([aria-hidden]) {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,18 @@
+From: Brightmere Foods, operations (synthetic)
+To: Harbourline Logistics, accounts
+Date: 9 March 2026
+
+We are withholding payment of INV-2201 because 11 deliveries in January arrived late. We will claim service credits.
+
+---
+From: Harbourline Logistics, accounts
+To: Brightmere Foods, operations
+Date: 10 March 2026
+
+Our tracking shows 3 deliveries outside the booked slot in January, not 11. Withholding is not permitted under clause 7.4. No service credit claim was received within 14 days.
+
+---
+From: Brightmere Foods, operations
+Date: 24 March 2026
+
+Our goods-in log shows the arrival times. We have attached it.
